@@ -10,11 +10,11 @@ RUN apt-get update && \
 RUN pip3 install pycryptodome
 
 # Load in per-task assets
-COPY ../data/ctf/task_assets/. /ctf/
+COPY ./data/ctf/task_assets/. /ctf/
 RUN find /ctf/ -type d -name solution -prune -exec rm -rf {} \;
 
 # Commit custom file system to determine diffs
-COPY ../docker/docker.gitignore /
+COPY ./docker/docker.gitignore /
 RUN mv docker.gitignore .gitignore
 RUN git config --global user.email "intercode@pnlp.org"
 RUN git config --global user.name "intercode"
